@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.12)
 
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
+# Fetch Pico SDK from git by default if not specified
+if (NOT DEFINED PICO_SDK_PATH AND NOT DEFINED PICO_SDK_FETCH_FROM_GIT)
+    set(PICO_SDK_FETCH_FROM_GIT ON)
+endif()
+
 include(pico_sdk_import.cmake)
 
 set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_LIST_DIR}/freertos)
